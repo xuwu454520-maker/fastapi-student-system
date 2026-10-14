@@ -1,0 +1,18 @@
+# Web 框架
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+
+# 数据库
+sqlalchemy==2.1.4
+pymysql==1.2.3
+
+# 认证
+PyJWT==2.15.1
+pwdlib==0.3.1
+argon2-cffi==25.1.0
+
+# 表单解析（登录接口 OAuth2 表单需要）
+python-multipart==0.0.32
+
+# 缓存
+redis==8.1.0
