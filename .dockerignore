@@ -1,0 +1,21 @@
+# 虚拟环境（几百 MB，绝对不要打进镜像）
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 日志和本地配置
+*.log
+.env
+
+# 版本控制与编辑器
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# 文档与截图（运行时用不到）
+screenshots/
+README.md

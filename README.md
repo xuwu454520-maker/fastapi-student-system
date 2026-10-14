@@ -67,6 +67,25 @@ uvicorn main:app --reload
 - 接口文档（Swagger UI）：<http://127.0.0.1:8000/docs>
 - 首页：<http://127.0.0.1:8000/>
 
+## Docker 部署
+
+项目已配置好 `docker-compose.yml`，一条命令即可拉起 **FastAPI + MySQL + Redis** 三个服务，无需在本地单独安装 MySQL 和 Redis：
+
+```bash
+docker compose up -d
+```
+
+启动后访问 <http://127.0.0.1:8000/docs>。数据库首次启动会自动执行 [init.sql](init.sql) 建表并写入示例数据。
+
+常用命令：
+
+```bash
+docker compose ps           # 查看服务状态
+docker compose logs -f app  # 查看应用日志
+docker compose down         # 停止服务（保留数据）
+docker compose down -v      # 停止并删除数据卷
+```
+
 ## 项目结构
 
 ```
@@ -84,7 +103,11 @@ fastapi/
 │   ├── student.py
 │   └── user.py
 ├── services/            # 业务逻辑
-└── requirements.txt     # 依赖清单
+├── Dockerfile           # 构建应用镜像
+├── docker-compose.yml   # 编排 app + mysql + redis
+├── init.sql             # 数据库初始化脚本
+├── requirements.txt     # 依赖清单
+└── screenshots/         # 项目截图
 ```
 
 ## 接口一览

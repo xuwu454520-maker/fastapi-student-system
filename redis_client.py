@@ -1,9 +1,12 @@
+import os
+
 import redis
 
 
+# 同理，从环境变量读取，默认值对应你本地的 Redis
 redis_client = redis.Redis(
-    host="localhost",
-    port=6380,
+    host=os.getenv("REDIS_HOST", "localhost"),
+    port=int(os.getenv("REDIS_PORT", "6380")),
     decode_responses=True
 )
 
