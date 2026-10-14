@@ -29,17 +29,24 @@
 - MySQL 8.0+
 - Redis（本地安装或 Docker）
 
-### 1. 安装依赖
+### 1. 克隆项目
+
+```bash
+git clone https://github.com/xuwu454520-maker/fastapi-student-system.git
+cd fastapi-student-system
+```
+
+### 2. 安装依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 配置数据库
+### 3. 配置数据库
 
 编辑 [database.py](database.py)，把 `DATABASE_URL` 里的账号密码改成你自己的 MySQL 连接信息，并确保数据库 `school` 已创建。
 
-### 3. 配置 Redis
+### 4. 配置 Redis
 
 确保 Redis 运行在本地 `6380` 端口（或修改 [redis_client.py](redis_client.py) 中的连接地址）。
 
@@ -49,7 +56,7 @@ pip install -r requirements.txt
 docker run -d --name my-redis -p 6380:6379 redis
 ```
 
-### 4. 启动服务
+### 5. 启动服务
 
 ```bash
 uvicorn main:app --reload
