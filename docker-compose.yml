@@ -37,6 +37,12 @@ services:
       DB_NAME: school
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+    # 把 .env 里的变量（如 DEEPSEEK_API_KEY）在运行时注入容器
+    # 这样密钥既不会打进镜像，也不会提交到 git
+    # required: false → 别人没建 .env 时也不会导致启动失败
+    env_file:
+      - path: .env
+        required: false
     depends_on:
       mysql:
         condition: service_healthy
