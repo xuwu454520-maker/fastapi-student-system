@@ -16,3 +16,7 @@ python-multipart==0.0.32
 
 # 缓存
 redis==8.1.0
+
+# 大模型调用（DeepSeek 兼容 OpenAI 接口格式，所以用 openai 这个库）
+openai==3.22.0
+python-dotenv==1.2.4
