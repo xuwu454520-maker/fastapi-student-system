@@ -6,6 +6,7 @@ from routers import student
 from routers import auth
 
 import ai_chat
+import ai_extract
 
 
 app = FastAPI(
@@ -26,6 +27,11 @@ app.include_router(
 
 app.include_router(
     ai_chat.router
+)
+
+
+app.include_router(
+    ai_extract.router
 )
 
 
