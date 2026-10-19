@@ -1,0 +1,7 @@
+FastAPI 是一个基于 Python 的 Web API 框架。
+
+FastAPI 可以通过路由定义接口，例如 GET、POST、PUT 和 DELETE。
+
+FastAPI 支持请求参数校验、Pydantic 数据模型、依赖注入和自动生成 Swagger 文档。
+
+在项目中，可以使用 uvicorn 启动 FastAPI 服务，并通过 /docs 查看接口文档。

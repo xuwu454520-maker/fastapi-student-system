@@ -1,6 +1,11 @@
 # 使用官方 Python 基础镜像（和本地版本保持一致，3.14）
 FROM python:3.14-slim
 
+# libgomp1 是 PyTorch 运行所需；tzdata 用于显示正确的本地时间
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgomp1 tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
 # 设置容器内的工作目录
 WORKDIR /app
 

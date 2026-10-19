@@ -37,12 +37,19 @@ services:
       DB_NAME: school
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+      # .env 里的 REDIS_URL 是宿主机地址（localhost:6380）
+      # 容器内必须指向 compose 的 redis 服务
+      REDIS_URL: redis://redis:6379/0
+      TZ: Asia/Shanghai
     # 把 .env 里的变量（如 DEEPSEEK_API_KEY）在运行时注入容器
     # 这样密钥既不会打进镜像，也不会提交到 git
     # required: false → 别人没建 .env 时也不会导致启动失败
     env_file:
       - path: .env
         required: false
+    volumes:
+      # 缓存 HuggingFace 模型，容器重建后不用重新下载
+      - hf_cache:/root/.cache/huggingface
     depends_on:
       mysql:
         condition: service_healthy
@@ -51,3 +58,4 @@ services:
 
 volumes:
   mysql_data:
+  hf_cache:

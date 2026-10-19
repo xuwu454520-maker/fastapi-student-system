@@ -1,6 +1,9 @@
+import os
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 import jwt
+from dotenv import load_dotenv
 from pwdlib import PasswordHash
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -12,8 +15,15 @@ from database import Base, get_db
 from models.user import UserDB
 
 
-# 请替换成第三步生成的随机密钥
-SECRET_KEY = "5bc98f96885ae9797bd19024ef38e13efabe936fa4385f1979f3160bd7dd9365"
+# 从项目根目录的 .env 读取密钥，不再硬编码在代码里
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise RuntimeError("请在 .env 中配置 SECRET_KEY")
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

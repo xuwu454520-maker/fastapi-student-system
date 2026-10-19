@@ -6,8 +6,16 @@ __pycache__/
 
 *.log
 
+# 运行日志目录
+logs/
+
 .env
 
 .idea/
 
 .vscode/
+
+# 向量数据库（运行时自动生成，不需要提交）
+chroma_db/
+agent_chroma_db/
+knowledge_chroma_db/

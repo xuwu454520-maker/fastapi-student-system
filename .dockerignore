@@ -19,3 +19,14 @@ __pycache__/
 # 文档与截图（运行时用不到）
 screenshots/
 README.md
+
+# 运行时生成的向量库（容器启动时会重新构建）
+chroma_db/
+agent_chroma_db/
+knowledge_chroma_db/
+
+# 运行日志
+logs/
+
+# 测试代码（运行时不需要）
+tests/
